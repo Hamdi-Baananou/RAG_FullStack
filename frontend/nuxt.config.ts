@@ -11,5 +11,14 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.API_BASE || 'http://localhost:8000/api'
     }
+  },
+  nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://localhost:8000/api',
+        changeOrigin: true,
+        prependPath: true
+      }
+    }
   }
 })
